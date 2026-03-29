@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxerify Watches</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Luxerify.</div>
+        <p>Elegance on your wrist.</p>
+    </header>
+
+    <main>
+        <div id="product-grid" class="grid">
+            </div>
+    </main>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Complete Your Order</h2>
+            <p id="selected-product-name"></p>
+            
+            <form id="order-form">
+                <input type="hidden" id="product" name="product">
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirm Order</button>
+            </form>
+            <div id="success-message" class="hidden">Thank you! Your order has been placed successfully.</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
