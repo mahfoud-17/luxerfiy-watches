@@ -40,7 +40,7 @@ app.post('/api/admin/login', (req, res) => {
 // ─── PRODUCTS ─────────────────────────────────────────────
 app.get('/api/products', (req, res) => {
     db.query('SELECT * FROM products', (err, results) => {
-        if (err) return res.status(500).send('DB Error');
+        if (err) return res.status(500).send({error: 'DB Error'});
         res.json(results);
     });
 });
@@ -56,7 +56,7 @@ app.post('/api/products', upload.single('image'), (req, res) => {
     db.query('INSERT INTO products (name, price, image) VALUES (?, ?, ?)',
         [name, parseInt(price), image],
         (err) => {
-            if (err) return res.status(500).send('DB Error');
+            if (err) return res.status(500).json({error: 'database Error'});
             res.json({ success: true });
         }
     );
@@ -71,7 +71,7 @@ app.put('/api/products/:id', upload.single('image'), (req, res) => {
         db.query('UPDATE products SET name=?, price=?, image=? WHERE id=?',
             [name, parseInt(price), image, id],
             (err) => {
-                if (err) return res.status(500).send('DB Error');
+                if (err) return res.status(500).json({error: 'database Error'});
                 res.json({ success: true });
             }
         );
@@ -79,7 +79,7 @@ app.put('/api/products/:id', upload.single('image'), (req, res) => {
         db.query('UPDATE products SET name=?, price=? WHERE id=?',
             [name, parseInt(price), id],
             (err) => {
-                if (err) return res.status(500).send('DB Error');
+                if (err) return res.status(500).json({error: 'database Error'});
                 res.json({ success: true });
             }
         );
@@ -88,7 +88,7 @@ app.put('/api/products/:id', upload.single('image'), (req, res) => {
 
 app.delete('/api/products/:id', (req, res) => {
     db.query('DELETE FROM products WHERE id=?', [req.params.id], (err) => {
-        if (err) return res.status(500).send('DB Error');
+        if (err) return res.status(500).json({error: 'database Error'});
         res.json({ success: true });
     });
 });
@@ -162,5 +162,5 @@ We will contact you shortly to confirm your delivery.
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on https://luxerfiy-watches.onrender.com:${PORT}`);
 });

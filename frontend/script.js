@@ -75,14 +75,14 @@ const totalDisplay = document.getElementById('totalDisplay');
 // Render products from database
 async function renderProducts() {
     try {
-        const res = await fetch('http://localhost:3000/api/products');
+        const res = await fetch('https://luxerfiy-watches.onrender.com/api/products');
         const products = await res.json();
 
         products.forEach(product => {
             const card = document.createElement('div');
             card.className = 'card';
             const imageUrl = product.image.startsWith('/uploads')
-                ? `http://localhost:3000${product.image}`
+                ? `https://luxerfiy-watches.onrender.com${product.image}`
                 : product.image;
             card.innerHTML = `
                 <img src="${imageUrl}" alt="${product.name}">
@@ -164,7 +164,7 @@ orderForm.addEventListener('submit', async (e) => {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/order', {
+        const response = await fetch('https://luxerfiy-watches.onrender.com/api/order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)

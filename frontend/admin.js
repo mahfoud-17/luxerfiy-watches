@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000';
+const API = 'https://luxerfiy-watches.onrender.com';
 
 // ─── LOGIN ────────────────────────────────────────────────
 async function handleLogin() {
