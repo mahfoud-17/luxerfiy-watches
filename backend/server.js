@@ -45,11 +45,8 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-app.post('/api/products', upload.single('image'), (req, res) => {
-    const { name, price } = req.body;
-    const image = req.file
-        ? `/uploads/${req.file.filename}`
-        : req.body.imageUrl;
+app.post('/api/products', (req, res) => {
+    const { name, price, image } = req.body;
 
     if (!name || !price || !image) return res.status(400).send('Missing fields');
 
@@ -96,8 +93,8 @@ app.delete('/api/products/:id', (req, res) => {
 // ─── ORDERS ───────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
     host: 'smtp-relay.brevo.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
         user: 'a6b113001@smtp-brevo.com',
         pass: 'xsmtpsib-f37ba59f1cede1365aa70fa6ec312d2d9fa6d347b45c035cde0b2d5d01c9c5d7-utphpVf72PSGmzHk'
