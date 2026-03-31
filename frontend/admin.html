@@ -48,8 +48,8 @@
                     <input type="number" id="new-price" placeholder="e.g. 2500">
                 </div>
                 <div class="form-group">
-                    <label>Image</label>
-                    <input type="file" id="new-image" accept="image/*">
+                    <label>Image URL</label>
+                    <input type="text" id="new-image" placeholder="e.g. https://example.com/image.jpg">
                 </div>
                 <p id="add-error" class="error hidden">Please fill all fields.</p>
                 <button onclick="addWatch()">Add Watch</button>
@@ -78,8 +78,8 @@
                 <input type="number" id="edit-price">
             </div>
             <div class="form-group">
-                <label>New Image (leave empty to keep current)</label>
-                <input type="file" id="edit-image" accept="image/*">
+                <label>New Image URL</label>
+                <input type="text" id="edit-image" placeholder="e.g. https://example.com/image.jpg">
             </div>
             <div class="modal-buttons">
                 <button onclick="saveEdit()">Save</button>

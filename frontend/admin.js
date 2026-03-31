@@ -62,29 +62,39 @@ async function loadWatches() {
 }
 
 // ─── ADD WATCH ────────────────────────────────────────────
-async function addWatch() {
+
+   async function addWatch() {
     const name = document.getElementById('new-name').value.trim();
     const price = document.getElementById('new-price').value.trim();
-    const imageFile = document.getElementById('new-image').files[0];
+    // 1. Change .files[0] to .value to get the URL string
+    const imageUrl = document.getElementById('new-image').value.trim(); 
     const errorEl = document.getElementById('add-error');
 
-    if (!name || !price || !imageFile) {
+    if (!name || !price || !imageUrl) {
         errorEl.classList.remove('hidden');
         return;
     }
+
     errorEl.classList.add('hidden');
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('price', price);
-    formData.append('image', imageFile);
+    // 2. We use a plain object instead of FormData
+    const watchData = {
+        name: name,
+        price: price,
+        image: imageUrl
+    };
 
     const res = await fetch(`${API}/api/products`, {
         method: 'POST',
-        body: formData
+        // 3. Tell the server we are sending JSON
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(watchData)
     });
 
     if (res.ok) {
+        // Clear inputs
         document.getElementById('new-name').value = '';
         document.getElementById('new-price').value = '';
         document.getElementById('new-image').value = '';

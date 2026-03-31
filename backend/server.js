@@ -95,12 +95,12 @@ app.delete('/api/products/:id', (req, res) => {
 
 // ─── ORDERS ───────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp-relay.brevo.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: 'a6b113001@smtp-brevo.com',
+        pass: 'xsmtpsib-f37ba59f1cede1365aa70fa6ec312d2d9fa6d347b45c035cde0b2d5d01c9c5d7-utphpVf72PSGmzHk'
     }
 });
 
