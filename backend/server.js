@@ -97,8 +97,8 @@ app.delete('/api/products/:id', (req, res) => {
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'mahfoudbelarbi2006@gmail.com',
-        pass: 'upwf tefq zddi ytyt'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
