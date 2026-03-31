@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxerify Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div id="login-page">
+        <div class="login-box">
+            <div class="logo">Luxerify.</div>
+            <h2>Admin Panel</h2>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="login-username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="login-password" placeholder="Enter password">
+            </div>
+            <p id="login-error" class="error hidden">Invalid username or password.</p>
+            <button onclick="handleLogin()">Login</button>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="admin-page" class="hidden">
+        <header class="admin-header">
+            <div class="logo">Luxerify. <span>Admin</span></div>
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        </header>
+
+        <main class="admin-main">
+
+            <!-- Add Watch -->
+            <section class="panel">
+                <h2>Add New Watch</h2>
+                <div class="form-group">
+                    <label>Watch Name</label>
+                    <input type="text" id="new-name" placeholder="e.g. Midnight Onyx">
+                </div>
+                <div class="form-group">
+                    <label>Price (DA)</label>
+                    <input type="number" id="new-price" placeholder="e.g. 2500">
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" id="new-image" accept="image/*">
+                </div>
+                <p id="add-error" class="error hidden">Please fill all fields.</p>
+                <button onclick="addWatch()">Add Watch</button>
+            </section>
+
+            <!-- Watch List -->
+            <section class="panel">
+                <h2>Manage Watches</h2>
+                <div id="watch-list"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Watch</h2>
+            <input type="hidden" id="edit-id">
+            <div class="form-group">
+                <label>Watch Name</label>
+                <input type="text" id="edit-name">
+            </div>
+            <div class="form-group">
+                <label>Price (DA)</label>
+                <input type="number" id="edit-price">
+            </div>
+            <div class="form-group">
+                <label>New Image (leave empty to keep current)</label>
+                <input type="file" id="edit-image" accept="image/*">
+            </div>
+            <div class="modal-buttons">
+                <button onclick="saveEdit()">Save</button>
+                <button class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+<!--Username: admin
+Password: luxerify2024-->

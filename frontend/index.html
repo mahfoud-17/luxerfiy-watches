@@ -15,8 +15,7 @@
     </header>
 
     <main>
-        <div id="product-grid" class="grid">
-            </div>
+        <div id="product-grid" class="grid"></div>
     </main>
 
     <div id="order-modal" class="modal">
@@ -24,27 +23,123 @@
             <span class="close-btn">&times;</span>
             <h2>Complete Your Order</h2>
             <p id="selected-product-name"></p>
-            
+
             <form id="order-form">
                 <input type="hidden" id="product" name="product">
-                
+
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" name="email" required>
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="05/06/07..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="wilayaSelect">Wilaya</label>
+                    <select id="wilayaSelect" name="wilaya" required>
+                        <option value="">-- Select your Wilaya --</option>
+                        <option value="Oran">31 - Oran</option>
+                        <option value="Alger">16 - Alger</option>
+                        <option value="Sidi Bel Abbès">22 - Sidi Bel Abbès</option>
+                        <option value="Mostaganem">27 - Mostaganem</option>
+                        <option value="Mascara">29 - Mascara</option>
+                        <option value="Aïn Témouchent">46 - Aïn Témouchent</option>
+                        <option value="Chlef">02 - Chlef</option>
+                        <option value="Oum El Bouaghi">04 - Oum El Bouaghi</option>
+                        <option value="Batna">05 - Batna</option>
+                        <option value="Béjaïa">06 - Béjaïa</option>
+                        <option value="Blida">09 - Blida</option>
+                        <option value="Bouira">10 - Bouira</option>
+                        <option value="Tlemcen">13 - Tlemcen</option>
+                        <option value="Tiaret">14 - Tiaret</option>
+                        <option value="Tizi Ouzou">15 - Tizi Ouzou</option>
+                        <option value="Jijel">18 - Jijel</option>
+                        <option value="Sétif">19 - Sétif</option>
+                        <option value="Saïda">20 - Saïda</option>
+                        <option value="Skikda">21 - Skikda</option>
+                        <option value="Annaba">23 - Annaba</option>
+                        <option value="Guelma">24 - Guelma</option>
+                        <option value="Constantine">25 - Constantine</option>
+                        <option value="Médéa">26 - Médéa</option>
+                        <option value="M'Sila">28 - M'Sila</option>
+                        <option value="Bordj Bou Arreridj">34 - Bordj Bou Arreridj</option>
+                        <option value="Boumerdès">35 - Boumerdès</option>
+                        <option value="El Tarf">36 - El Tarf</option>
+                        <option value="Tissemsilt">38 - Tissemsilt</option>
+                        <option value="Khenchela">40 - Khenchela</option>
+                        <option value="Souk Ahras">41 - Souk Ahras</option>
+                        <option value="Tipaza">42 - Tipaza</option>
+                        <option value="Mila">43 - Mila</option>
+                        <option value="Aïn Defla">44 - Aïn Defla</option>
+                        <option value="Relizane">48 - Relizane</option>
+                        <option value="Laghouat">03 - Laghouat</option>
+                        <option value="Biskra">07 - Biskra</option>
+                        <option value="Béchar">08 - Béchar</option>
+                        <option value="Tébessa">12 - Tébessa</option>
+                        <option value="Djelfa">17 - Djelfa</option>
+                        <option value="Ouargla">30 - Ouargla</option>
+                        <option value="El Oued">39 - El Oued</option>
+                        <option value="Ghardaïa">47 - Ghardaïa</option>
+                        <option value="Ouled Djellal">51 - Ouled Djellal</option>
+                        <option value="Béni Abbès">53 - Béni Abbès</option>
+                        <option value="Touggourt">54 - Touggourt</option>
+                        <option value="El M'Ghair">55 - El M'Ghair</option>
+                        <option value="El Menia">56 - El Menia</option>
+                        <option value="Adrar">01 - Adrar</option>
+                        <option value="El Bayadh">32 - El Bayadh</option>
+                        <option value="Naâma">45 - Naâma</option>
+                        <option value="Timimoun">37 - Timimoun</option>
+                        <option value="Bordj Badji Mokhtar">52 - Bordj Badji Mokhtar</option>
+                        <option value="Tamanrasset">11 - Tamanrasset</option>
+                        <option value="Illizi">33 - Illizi</option>
+                        <option value="Tindouf">37 - Tindouf</option>
+                        <option value="In Salah">57 - In Salah</option>
+                        <option value="In Guezzam">58 - In Guezzam</option>
+                        <option value="Djanet">56 - Djanet</option>
+                    </select>
+                </div>
+
+                <!-- Delivery Type Selection -->
+                <div class="form-group">
+                    <label>Delivery Type</label>
+                    <div class="delivery-type-btns">
+                        <button type="button" class="delivery-btn active" id="btn-office" onclick="setDeliveryType('office')">🏢 Office Pickup</button>
+                        <button type="button" class="delivery-btn" id="btn-home" onclick="setDeliveryType('home')">🏠 Home Delivery</button>
+                    </div>
+                </div>
+
+                <div class="form-group" id="office-group">
+                    <label for="office">Delivery Office (Stop Desk)</label>
+                    <select id="office" name="office">
+                        <option value="">-- Choose Office --</option>
+                        <option value="Main Center">Main Center Office</option>
+                        <option value="Yalidine">Yalidine Office</option>
+                        <option value="Kazitour">Kazitour Office</option>
+                    </select>
+                    <small>Pick the office where you will collect your watch.</small>
+                </div>
+
                 <div class="form-group">
                     <label for="address">Delivery Address</label>
-                    <textarea id="address" rows="3" required></textarea>
+                    <textarea id="address" name="address" rows="3" required></textarea>
                 </div>
-                
+
+                <div class="price-summary">
+                    <p>Delivery: <span id="deliveryDisplay">0</span> DA</p>
+                    <p><strong>Total: <span id="totalDisplay">0</span> DA</strong></p>
+                </div>
+
                 <button type="submit" class="submit-btn">Confirm Order</button>
             </form>
+
             <div id="success-message" class="hidden">Thank you! Your order has been placed successfully.</div>
         </div>
     </div>

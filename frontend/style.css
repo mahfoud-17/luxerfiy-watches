@@ -112,6 +112,15 @@ button:hover {
     max-width: 500px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     position: relative;
+    
+    max-height: 85vh;    /* This stops the box from being taller than the screen */
+    overflow-y: auto;    /* This adds a scrollbar inside the box if it's too long */
+     
+    max-height: 80vh;    /* 80% of the screen height */
+    overflow-y: auto;    /* Makes the INSIDE of the box scrollable */
+    position: relative;
+    padding-bottom: 60px;/* Gives some space at the bottom */
+
 }
 
 .close-btn {
@@ -162,4 +171,72 @@ button:hover {
     padding: 15px;
     border: 1px solid #c8e6c9;
     text-align: center;
+}
+/* 1. Style the Dropdown and Inputs to look the same */
+#order-form select, 
+#order-form input, 
+#order-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Makes sure padding doesn't break the width */
+}
+
+/* 2. Style the Price Summary box */
+.price-summary {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #27ae60; /* A nice green stripe */
+    margin: 20px 0;
+}
+
+.price-summary p {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between; /* Puts label on left, price on right */
+    font-size: 15px;
+    color: #333;
+}
+
+.price-summary strong {
+    font-size: 18px;
+    color: #2c3e50;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* 3. Make the "Wilaya" labels stand out */
+.form-group label {
+    font-weight: bold;
+    display: block;
+    color: #555;
+    margin-top: 10px;
+}
+.delivery-type-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.delivery-btn {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #c9a84c;
+    background: transparent;
+    color: #c9a84c;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.delivery-btn.active {
+    background: #c9a84c;
+    color: #fff;
 }
